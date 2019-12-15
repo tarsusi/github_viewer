@@ -1,8 +1,8 @@
 import React from 'react';
 import { Alert, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
-import { getRepositoryDetails } from '../../../services/repositoryService';
-import { RepositoryDetailRow } from '../../../components/repository-detail-row/RepositoryDetailRow';
+import { getRepositoryDetails } from '@services/repositoryService';
+import { RepositoryDetailRow } from '@components/repository-detail-row/RepositoryDetailRow';
 
 type Props = NavigationScreenProps & {};
 

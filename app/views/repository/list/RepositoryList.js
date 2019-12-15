@@ -3,8 +3,8 @@ import { Alert } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { RepositoryCard } from '../../../components/repository-card/RepositoryCard';
-import { getUserRepositories } from '../../../services/repositoryService';
+import { RepositoryCard } from '@components/repository-card/RepositoryCard';
+import { getUserRepositories } from '@services/repositoryService';
 
 type Props = NavigationScreenProps & {};
 
@@ -12,7 +12,7 @@ const USER_NAME = 'reactjs';
 
 export class RepositoryList extends Component<Props> {
   static navigationOptions = {
-    title: 'Repository List'
+    title: 'Repository List',
   };
 
   constructor(props) {

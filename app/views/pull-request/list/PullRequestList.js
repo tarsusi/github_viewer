@@ -1,8 +1,8 @@
 import React from 'react';
 import { Alert, ScrollView, StyleSheet } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
-import { getPullRequests } from '../../../services/pullRequestService';
-import { PullRequestCard } from '../../../components/pull-request-card/PullRequestCard';
+import { getPullRequests } from '@services/pullRequestService';
+import { PullRequestCard } from '@components/pull-request-card/PullRequestCard';
 
 type Props = NavigationScreenProps & {};
 

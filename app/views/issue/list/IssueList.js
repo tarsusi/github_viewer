@@ -1,8 +1,8 @@
 import React from 'react';
 import { Alert, ScrollView, StyleSheet } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
-import { getIssues } from '../../../services/issueService';
-import { IssueCard } from '../../../components/issue-card/IssueCard';
+import { getIssues } from '@services/issueService';
+import { IssueCard } from '@components/issue-card/IssueCard';
 
 type Props = NavigationScreenProps & {};
 
