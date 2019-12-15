@@ -1,13 +1,14 @@
 import React from 'react';
-import { Alert, StyleSheet, View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Alert, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 import { RepositoryDetailRow } from '@components/repository-detail-row/RepositoryDetailRow';
+import { AppIndicator } from '@components/app-indicator/AppIndicator';
 
 type Props = NavigationScreenProps & {};
 
 export class RepositoryDetails extends React.Component<Props> {
   static navigationOptions = {
-    title: 'Repository Details',
+    title: 'Repository Details'
   };
 
   componentDidMount() {
@@ -46,11 +47,7 @@ export class RepositoryDetails extends React.Component<Props> {
     const { endpoint } = this.props.navigation.state.params;
 
     return (
-      (loading && (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#4fc2e5" />
-        </View>
-      )) || (
+      (loading && <AppIndicator />) || (
         <View style={styles.detailsContainer}>
           {details && (
             <>
@@ -86,11 +83,6 @@ export class RepositoryDetails extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  loadingContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
   detailsContainer: { flex: 1, backgroundColor: '#46cfb0', padding: 24 },
   buttonsWrapper: {
     flexDirection: 'row',
