@@ -29,7 +29,7 @@ export class PullRequestList extends React.Component<Props> {
       (loading && <AppIndicator />) || (
         <ScrollView style={styles.container}>
           {pullRequests && pullRequests.length === 0 ? (
-            <Text style={styles.noPullRequest}>There is no any pull requests for this repository</Text>
+            <Text style={styles.noPullRequest}>There is no any pull request for this repository</Text>
           ) : (
             pullRequests.map(({ id, state, number, title, createdAt, userName }) => (
               <PullRequestCard
