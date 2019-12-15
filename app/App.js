@@ -5,14 +5,14 @@ import { Provider } from 'react-redux';
 import RepositoryListContainer from './views/repository/list/RepositoryContainer';
 import RepositoryDetailsContainer from './views/repository/detail/RepositoryDetailsContainer';
 import { IssueList } from './views/issue/list/IssueList';
-import { PullRequestList } from './views/pull-request/list/PullRequestList';
+import PullRequestListContainer from './views/pull-request/list/PullRequestListContainer';
 import configureStore from './store/index';
 
 const MainNavigator = createStackNavigator({
   RepositoryList: { screen: RepositoryListContainer },
   RepositoryDetails: { screen: RepositoryDetailsContainer },
   IssueList: { screen: IssueList },
-  PullRequestList: { screen: PullRequestList },
+  PullRequestList: { screen: PullRequestListContainer },
 });
 
 const App = createAppContainer(MainNavigator);
