@@ -49,7 +49,7 @@ export class RepositoryList extends Component<Props> {
               description={description}
               language={language}
               detailsEndpoint={detailsEndpoint}
-              onClick={(endpoint) => navigate('RepositoryDetail', { endpoint })}
+              onClick={(endpoint) => navigate('RepositoryDetails', { endpoint })}
             />
           ))}
       </ScrollView>
