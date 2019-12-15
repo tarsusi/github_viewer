@@ -1,21 +1,10 @@
+import axios from 'axios';
 import { get } from './baseApiService';
 
+const BASE_URL = 'https://api.github.com';
+
 export const getUserRepositories = (userName) => {
-  return get(`https://api.github.com/users/${userName}/repos`).then(({ data: repositories, error, message }) => {
-    return {
-      error,
-      message,
-      repositories:
-        repositories &&
-        repositories.map(({ name, id, description, url: detailsEndpoint, language }) => ({
-          description,
-          detailsEndpoint,
-          id,
-          language,
-          name,
-        })),
-    };
-  });
+  return axios.get(`${BASE_URL}/users/${userName}/repos`);
 };
 
 export const getRepositoryDetails = (repositoryUrl) => {
