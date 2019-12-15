@@ -1,5 +1,6 @@
 const initialState = {
   list: [],
+  details: {},
   loading: true,
   errorMessage: '',
 };
@@ -7,6 +8,9 @@ const initialState = {
 export const GET_REPOSITORIES = 'GET_REPOSITORIES';
 export const GET_REPOSITORIES_FULFILLED = 'GET_REPOSITORIES_FULFILLED';
 export const GET_REPOSITORIES_REJECTED = 'GET_REPOSITORIES_REJECTED';
+export const GET_REPOSITORY_DETAILS = 'GET_REPOSITORY_DETAILS';
+export const GET_REPOSITORY_DETAILS_FULFILLED = 'GET_REPOSITORY_DETAILS_FULFILLED';
+export const GET_REPOSITORY_DETAILS_REJECTED = 'GET_REPOSITORY_DETAILS_REJECTED';
 
 const repositoryReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -22,6 +26,23 @@ const repositoryReducer = (state = initialState, action) => {
         loading: action.loading,
       };
     case GET_REPOSITORIES_REJECTED:
+      return {
+        ...state,
+        errorMessage: action.payload,
+        loading: action.loading,
+      };
+    case GET_REPOSITORY_DETAILS:
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    case GET_REPOSITORY_DETAILS_FULFILLED:
+      return {
+        ...state,
+        details: action.payload,
+        loading: action.loading,
+      };
+    case GET_REPOSITORY_DETAILS_REJECTED:
       return {
         ...state,
         errorMessage: action.payload,

@@ -3,14 +3,14 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { Provider } from 'react-redux';
 import RepositoryListContainer from './views/repository/list/RepositoryContainer';
-import { RepositoryDetails } from './views/repository/detail/RepositoryDetails';
+import RepositoryDetailsContainer from './views/repository/detail/RepositoryDetailsContainer';
 import { IssueList } from './views/issue/list/IssueList';
 import { PullRequestList } from './views/pull-request/list/PullRequestList';
 import configureStore from './store/index';
 
 const MainNavigator = createStackNavigator({
   RepositoryList: { screen: RepositoryListContainer },
-  RepositoryDetails: { screen: RepositoryDetails },
+  RepositoryDetails: { screen: RepositoryDetailsContainer },
   IssueList: { screen: IssueList },
   PullRequestList: { screen: PullRequestList },
 });
