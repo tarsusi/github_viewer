@@ -1,22 +1,58 @@
-import React from 'react';
-import { Button } from 'react-native';
+import React, { Component } from 'react';
+import { Alert } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
+import { ScrollView } from 'react-native-gesture-handler';
+
+import { RepositoryCard } from '../../../components/repository-card/RepositoryCard';
+import { getUserRepositories } from '../../../services/repositoryService';
 
 type Props = NavigationScreenProps & {};
 
-export class RepositoryList extends React.Component<Props> {
+const USER_NAME = 'reactjs';
+
+export class RepositoryList extends Component<Props> {
   static navigationOptions = {
-    title: 'RepositoryList',
+    title: 'Repository List'
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      repositories: [],
+    };
+  }
+
+  componentDidMount() {
+    getUserRepositories(USER_NAME).then(({ repositories, error, message }) => {
+      if (!error) {
+        this.setState({
+          repositories,
+        });
+      } else {
+        Alert.alert('Error', message);
+      }
+    });
+  }
 
   render() {
     const { navigate } = this.props.navigation;
+    const { repositories } = this.state;
 
     return (
-      <Button
-        title="Go to Repository Details"
-        onPress={() => navigate('RepositoryDetail', { name: 'RepositoryName' })}
-      />
+      <ScrollView style={{ backgroundColor: '#e6e9ed', flex: 1, padding: 24 }}>
+        {repositories &&
+          repositories.map(({ name, id, description, language, detailsEndpoint }) => (
+            <RepositoryCard
+              key={id}
+              name={name}
+              description={description}
+              language={language}
+              detailsEndpoint={detailsEndpoint}
+              onClick={(endpoint) => navigate('RepositoryDetail', { endpoint })}
+            />
+          ))}
+      </ScrollView>
     );
   }
 }
