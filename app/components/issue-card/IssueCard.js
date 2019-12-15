@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
-import { capitalizeWord } from '../../services/stringService';
+import { capitalizeWord } from '../../utils/stringUtil';
 
 type Props = {
   state: string,
