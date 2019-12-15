@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -40,7 +40,7 @@ export class RepositoryList extends Component<Props> {
     const { repositories } = this.state;
 
     return (
-      <ScrollView style={{ backgroundColor: '#e6e9ed', flex: 1, padding: 24 }}>
+      <ScrollView style={styles.container}>
         {repositories &&
           repositories.map(({ name, id, description, language, detailsEndpoint }) => (
             <RepositoryCard
@@ -56,3 +56,7 @@ export class RepositoryList extends Component<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: { backgroundColor: '#e6e9ed', flex: 1, padding: 24 }
+});
