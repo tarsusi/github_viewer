@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-import { GET_ISSUES, GET_ISSUES_FULFILLED, GET_ISSUES_REJECTED } from '@store/reducers/issueReducer';
+import { CLEAR_ISSUES, GET_ISSUES, GET_ISSUES_FULFILLED, GET_ISSUES_REJECTED } from '@store/reducers/issueReducer';
+
+const PAGE_SIZE = 15;
+
+export const clearIssues = () => {
+  return {
+    type: CLEAR_ISSUES,
+  };
+};
 
 export const getIssuesLoading = (bool) => {
   return {
@@ -25,11 +33,11 @@ export const getIssuesRejected = (error) => {
   };
 };
 
-export const getIssues = (pullRequestUrl) => {
+export const getIssues = (issueUrl, page) => {
   return async (dispatch) => {
     try {
       dispatch(getIssuesLoading(true));
-      const { data: issues } = await axios.get(pullRequestUrl);
+      const { data: issues } = await axios.get(`${issueUrl}?per_page=${PAGE_SIZE}&page=${page}`);
 
       dispatch(
         getIssuesFulfilled(

@@ -1,10 +1,19 @@
 import axios from 'axios';
 
 import {
+  CLEAR_PULL_REQUESTS,
   GET_PULL_REQUESTS,
   GET_PULL_REQUESTS_FULFILLED,
   GET_PULL_REQUESTS_REJECTED,
 } from '@store/reducers/pullRequestReducer';
+
+const PAGE_SIZE = 15;
+
+export const clearPullRequests = () => {
+  return {
+    type: CLEAR_PULL_REQUESTS,
+  };
+};
 
 export const getPullRequestsLoading = (bool) => {
   return {
@@ -29,11 +38,11 @@ export const getPullRequestsRejected = (error) => {
   };
 };
 
-export const getPullRequests = (pullRequestUrl) => {
+export const getPullRequests = (pullRequestUrl, page) => {
   return async (dispatch) => {
     try {
       dispatch(getPullRequestsLoading(true));
-      const { data: pullRequests } = await axios.get(pullRequestUrl);
+      const { data: pullRequests } = await axios.get(`${pullRequestUrl}?per_page=${PAGE_SIZE}&page=${page}`);
 
       dispatch(
         getPullRequestsFulfilled(

@@ -2,9 +2,11 @@ const initialState = {
   list: [],
   details: {},
   loading: true,
+  isFinished: false,
   errorMessage: '',
 };
 
+export const CLEAR_REPOSITORIES = 'CLEAR_REPOSITORIES';
 export const GET_REPOSITORIES = 'GET_REPOSITORIES';
 export const GET_REPOSITORIES_FULFILLED = 'GET_REPOSITORIES_FULFILLED';
 export const GET_REPOSITORIES_REJECTED = 'GET_REPOSITORIES_REJECTED';
@@ -22,7 +24,8 @@ const repositoryReducer = (state = initialState, action) => {
     case GET_REPOSITORIES_FULFILLED:
       return {
         ...state,
-        list: action.payload,
+        list: [...state.list, ...action.payload],
+        isFinished: action.payload && action.payload.length === 0,
         loading: action.loading,
       };
     case GET_REPOSITORIES_REJECTED:
@@ -48,6 +51,8 @@ const repositoryReducer = (state = initialState, action) => {
         errorMessage: action.payload,
         loading: action.loading,
       };
+    case CLEAR_REPOSITORIES:
+      return { ...initialState };
     default:
       return state;
   }

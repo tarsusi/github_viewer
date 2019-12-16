@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import {
+  CLEAR_REPOSITORIES,
   GET_REPOSITORIES,
   GET_REPOSITORIES_FULFILLED,
   GET_REPOSITORIES_REJECTED,
@@ -10,6 +11,13 @@ import {
 } from '@store/reducers/repositoryReducer';
 
 const BASE_URL = 'https://api.github.com';
+const PAGE_SIZE = 15;
+
+export const clearRepositories = () => {
+  return {
+    type: CLEAR_REPOSITORIES,
+  };
+};
 
 export const getRepositoriesLoading = (bool) => {
   return {
@@ -34,12 +42,14 @@ export const getRepositoriesRejected = (error) => {
   };
 };
 
-export const getRepositories = (userName) => {
+export const getRepositories = (userName, page) => {
   return async (dispatch) => {
     try {
       dispatch(getRepositoriesLoading(true));
 
-      const { data: repositories } = await axios.get(`${BASE_URL}/users/${userName}/repos`);
+      const { data: repositories } = await axios.get(
+        `${BASE_URL}/users/${userName}/repos?per_page=${PAGE_SIZE}&page=${page}`,
+      );
 
       dispatch(
         getRepositoriesFulfilled(
