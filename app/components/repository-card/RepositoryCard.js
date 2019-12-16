@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 type Props = {
-  name: string,
   description: string,
-  language: string,
   detailsEndpoint: string,
+  language: string,
+  name: string,
   onClick: () => any,
 };
 
-export const RepositoryCard = ({ name, description, language, detailsEndpoint, onClick }: Props) => {
+export const RepositoryCard = ({ description, detailsEndpoint, language, name, onClick }: Props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{name}</Text>
@@ -27,10 +27,10 @@ export const RepositoryCard = ({ name, description, language, detailsEndpoint, o
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ed5565',
+    borderRadius: 8,
     marginBottom: 16,
     padding: 16,
     paddingBottom: 8,
-    borderRadius: 8,
   },
   title: {
     color: '#ffcd69',
@@ -40,9 +40,9 @@ const styles = StyleSheet.create({
   },
   description: { color: '#f5f7fa' },
   footerContainer: {
+    alignItems: 'center',
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
     marginTop: 12,
   },
   language: { flex: 5, color: '#f5f7fa' },

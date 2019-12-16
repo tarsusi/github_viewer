@@ -9,8 +9,8 @@ export const AppIndicator = () => (
 
 const styles = StyleSheet.create({
   loadingContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
+    justifyContent: 'center',
   },
 });

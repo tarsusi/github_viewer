@@ -3,14 +3,14 @@ import React from 'react';
 import { capitalizeWord } from '@utils/stringUtil';
 
 type Props = {
-  state: string,
-  number: number,
-  title: string,
   createdAt: string,
+  number: number,
+  state: string,
+  title: string,
   userName: string,
 };
 
-export const IssueCard = ({ state, number, title, createdAt, userName }: Props) => {
+export const IssueCard = ({ createdAt, number, state, title, userName }: Props) => {
   const generatedDescription = `#${number} opened on ${new Date(createdAt).toDateString()} by ${userName}`;
 
   return (
@@ -31,9 +31,9 @@ export const IssueCard = ({ state, number, title, createdAt, userName }: Props) 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
+    borderRadius: 8,
     marginBottom: 16,
     padding: 16,
-    borderRadius: 8,
   },
   openState: {
     color: '#46cfb0',

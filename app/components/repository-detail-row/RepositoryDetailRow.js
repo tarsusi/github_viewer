@@ -18,9 +18,9 @@ export const RepositoryDetailRow = ({ label, value }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    fontSize: 18,
     justifyContent: 'space-between',
     marginBottom: 12,
-    fontSize: 18,
   },
   rowLabel: {
     color: '#ffcd69',
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   rowValue: {
     color: '#f5f7fa',
     flex: 1,
-    textAlign: 'right',
     flexWrap: 'wrap'
+    textAlign: 'right',
   },
 });

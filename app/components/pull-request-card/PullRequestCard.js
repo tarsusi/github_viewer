@@ -1,16 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { capitalizeWord } from '@utils/stringUtil';
 
 type Props = {
-  state: string,
-  number: number,
-  title: string,
   createdAt: string,
+  number: number,
+  state: string,
+  title: string,
   userName: string,
 };
 
-export const PullRequestCard = ({ state, number, title, createdAt, userName }: Props) => {
+export const PullRequestCard = ({ createdAt, number, state, title, userName }: Props) => {
   const generatedDescription = `#${number} opened on ${new Date(createdAt).toDateString()} by ${userName}`;
 
   return (
@@ -31,9 +31,9 @@ export const PullRequestCard = ({ state, number, title, createdAt, userName }: P
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
+    borderRadius: 8,
     marginBottom: 16,
     padding: 16,
-    borderRadius: 8,
   },
   openState: {
     color: '#46cfb0',
